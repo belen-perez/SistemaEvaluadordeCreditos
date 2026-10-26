@@ -1,3 +1,5 @@
+package com.mycompany.evaluadorcreditos;
+
 public abstract class Cliente {
     protected String nombre;
     protected double ingresos;
