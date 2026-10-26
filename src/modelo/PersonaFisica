@@ -1,3 +1,5 @@
+package com.mycompany.evaluadorcreditos;
+
 public class PersonaFisica extends Cliente {
 
     public PersonaFisica(String nombre, double ingresos, double gastos, boolean tieneBuenHistorial) {
