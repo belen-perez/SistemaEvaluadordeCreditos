@@ -1,3 +1,5 @@
+package com.mycompany.evaluadorcreditos;
+
 public class Empresa extends Cliente {
     private String rubro;
     private String director;
