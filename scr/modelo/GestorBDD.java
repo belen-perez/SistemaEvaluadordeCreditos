@@ -1,3 +1,4 @@
+package com.mycompany.evaluadorcreditos;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
