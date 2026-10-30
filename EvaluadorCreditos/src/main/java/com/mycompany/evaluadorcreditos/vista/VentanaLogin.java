@@ -1,7 +1,9 @@
 package com.mycompany.evaluadorcreditos.vista;
 
-import com.mycompany.evaluadorcreditos.persistencia.GestorBDD;
 import javax.swing.*;
+
+import com.mycompany.evaluadorcreditos.persistencia.GestorBDD;
+
 import java.awt.*;
 import java.sql.SQLException;
 
@@ -50,7 +52,7 @@ public class VentanaLogin extends JFrame {
         }
 
         try {
-            if (gestor.validarUsuario(usuario, clave)) {
+            if (gestor.validarAcceso(usuario, clave)) {
                 dispose();
                 new VentanaPrincipal(gestor).setVisible(true);
             } else {

@@ -224,12 +224,10 @@ public class VentanaPrincipal extends JFrame {
 
         iniciarOperacion("Guardando cliente...");
         try {
-            int id = gestor.guardarCliente(cliente); // tabla padre, devuelve el id generado
+            int id = gestor.guardarCliente(cliente);
 
-            if (esEmpresa) {
-                gestor.guardarEmpresa(id, rubro, director); // tabla hija
-            } else {
-                gestor.guardarPersonaFisica(id);            // tabla hija
+            if (id == -1) {
+                throw new SQLException("No se pudo obtener el ID del cliente guardado.");
             }
 
             JOptionPane.showMessageDialog(this,
