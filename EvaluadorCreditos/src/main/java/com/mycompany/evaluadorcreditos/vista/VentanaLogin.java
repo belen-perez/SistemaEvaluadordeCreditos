@@ -1,22 +1,29 @@
 package com.mycompany.evaluadorcreditos.vista;
 
+import com.mycompany.evaluadorcreditos.persistencia.GestorBDD;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
 public class VentanaLogin extends JFrame {
 
-    private final JTextField campoUsuario = new JTextField(15);
-    private final JPasswordField campoClave = new JPasswordField(15);
-    private final JButton botonIngresar = new JButton("Ingresar");
-    private final GestorBDD gestor= new GestorBDD);
+    private JTextField campoUsuario;
+    private JPasswordField campoClave;
+    private JButton botonIngresar;
+    private GestorBDD gestor;
 
     public VentanaLogin() {
-        super("Evaluador de Créditos - Acceso");
+        gestor = new GestorBDD();
+
+        setTitle("Evaluador de Créditos - Acceso");
         setSize(350, 180);
-        setLocationRelativeTo(null);          
+        setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        campoUsuario = new JTextField(15);
+        campoClave = new JPasswordField(15);
+        botonIngresar = new JButton("Ingresar");
 
         JPanel panel = new JPanel(new GridLayout(3, 2, 8, 8));
         panel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
@@ -24,12 +31,12 @@ public class VentanaLogin extends JFrame {
         panel.add(campoUsuario);
         panel.add(new JLabel("Clave:"));
         panel.add(campoClave);
-        panel.add(new JLabel());
+        panel.add(new JLabel(""));
         panel.add(botonIngresar);
         add(panel);
 
         botonIngresar.addActionListener(e -> ingresar());
-        getRootPane().setDefaultButton(botonIngresar);   
+        getRootPane().setDefaultButton(botonIngresar); // Enter = Ingresar
     }
 
     private void ingresar() {
@@ -41,6 +48,7 @@ public class VentanaLogin extends JFrame {
                     "Datos incompletos", JOptionPane.WARNING_MESSAGE);
             return;
         }
+
         try {
             if (gestor.validarUsuario(usuario, clave)) {
                 dispose();
